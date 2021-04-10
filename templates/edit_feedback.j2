@@ -1,0 +1,36 @@
+{% extends 'base.j2'%}
+{%block title%} Feedback Form {%endblock%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="display-3">Feedback</h1> 
+            <p class="lead">Edit Feedback</p>
+            <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <p>
+                {{ form.title.label }}
+                {{ form.title(class_="form-control", placeholder=feedback.title) }}
+
+                {% for error in form.errors %}
+                <span class="form-text text-danger">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.content.label }}
+                {{ form.content(class_="form-control", placeholder=feedback.content) }}
+
+                {% for error in form.errors %}
+                <span class="form-text text-danger">{{ error }}</span>
+                {% endfor %}
+            </p>
+
+            <button class="btn btn-success" type="submit">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
